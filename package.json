@@ -1,0 +1,31 @@
+{
+  "name": "disaster-management-network",
+  "version": "1.0.0",
+  "description": "Disaster Management & Emergency Communication Network Platform",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm install && npm run build",
+    "build:client": "cd client && npm run build",
+    "test:api": "node server/test_apis.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "socket.io": "^4.8.1",
+    "sqlite3": "^5.1.7"
+  },
+  "keywords": [
+    "computer-networks",
+    "disaster-management",
+    "ospf",
+    "vlan",
+    "core-emulator"
+  ],
+  "author": "Sharad Pratap Singh, Shubhankar Pratap Singh, Aaditya Jain",
+  "license": "MIT"
+}
