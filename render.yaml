@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: npm install && cd client && npm install && npm run build
+    buildCommand: npm install --build-from-source && cd client && npm install && npm run build
     startCommand: node server/server.js
     healthCheckPath: /health
     autoDeploy: true

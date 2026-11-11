@@ -1,5 +1,4 @@
 import mysql from 'mysql2/promise';
-import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -91,8 +90,12 @@ export async function initDatabase() {
     }
   }
 
-  // 2. Try SQLite
+  // 2. Try SQLite (dynamic import so a missing native binary falls to InMemory gracefully)
   try {
+    const sqlite3Mod = await import('sqlite3').catch(() => null);
+    if (!sqlite3Mod) throw new Error('sqlite3 native module not available');
+    const sqlite3 = sqlite3Mod.default;
+
     const sqliteDir = isServerless ? '/tmp' : path.join(__dirname, '..', 'database');
     if (!fs.existsSync(sqliteDir)) {
       try {
