@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const RENDER_BACKEND = 'https://disaster-management-backend-jyde.onrender.com';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? '/api' : `${RENDER_BACKEND}/api`),
   headers: {
     'Content-Type': 'application/json'
   }
